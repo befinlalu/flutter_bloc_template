@@ -10,7 +10,7 @@ class ShowParticipantWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Showing Participants"),
+        title: const Text("Showing Participants"),
       ),
       body: _builtBody(), // Building the body of the widget
     );
@@ -20,13 +20,12 @@ class ShowParticipantWidget extends StatelessWidget {
     return BlocBuilder<GetparticipantBloc, GetparticipantState>(
         builder: (_, state) {
       if (state is ParticipantLoadingState) {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(), // Displaying loading indicator
         );
       }
       if (state is ParticipantErrorState) {
-        print(state.dioException);
-        return Center(
+        return const Center(
           child: Text('Error loading participants'), // Displaying error message
         );
       }
@@ -46,7 +45,7 @@ class ShowParticipantWidget extends StatelessWidget {
           itemCount: state.participants!.length, // Number of participants
         );
       }
-      return SizedBox(); // Placeholder if none of the above cases
+      return const SizedBox(); // Placeholder if none of the above cases
     });
   }
 }
